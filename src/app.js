@@ -21,7 +21,7 @@ app.use(cookieParser());
 
 app.use(cors({
     
- origin: 'http://localhost:5173', // no trailing slash
+ origin: 'http://13.204.63.199/', // no trailing slash
   methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'],
   credentials: true
 
