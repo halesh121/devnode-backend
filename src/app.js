@@ -1,4 +1,4 @@
-
+const http = require('http');
 const express = require('express')
 const cors=require('cors')
 const {db}=require('./config/database.js')
@@ -35,11 +35,14 @@ app.use(cors({
  app.use('/',connectinguser);
  app.use('/',connecteduser)
  
-
+const server = http.createServer(app);
+// Configure timeouts
+server.keepAliveTimeout = 35000; // 35 seconds
+server.headersTimeout = 40000; // 40 seconds
 
 db().then(()=>{
     console.log("database connected")
-    app.listen(3000,()=>{
+    server.listen(3000,()=>{
         console.log("server listening ot 3000")
     });
    
